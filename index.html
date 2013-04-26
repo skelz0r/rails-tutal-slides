@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Rails-Tutal - Slides</title>
+
+		<meta charset="utf-8">
+		<link href="img/layout/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon">
+		<meta name="description" content="Rails Tutal Slides">
+		<meta name="author" content="Loïc Delmaire">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/blackbird.css" id="bbtheme">
+		<link rel="stylesheet" href="css/style.css" id="style">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+		<header id="top">
+			<div class="logo-wrapper">
+				<div class="wrapper">
+					<a href="http://www.blackbird.co"><img class="logo" alt="Blackbird" src="img/layout/logo.svg"></a>
+				</div>
+			</div>
+			<div id="nav">
+				<div class="nav-elt title" style="display: none;">
+					<img src="img/layout/quotes.png" alt="quotes" />
+					<span></span>
+				</div>
+				<div class="nav-elt subtitle" style="display: none;">
+					<img src="img/layout/tiny-quotes.png" alt="quotes" />
+					<span></span>
+				</div>
+			</div>
+		</header>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+				<h1>Rails Tutal</h1>
+				<h3>(ou comment avoir la Flemme)</h3>
+					<p>
+						<img src="img/rails.png" alt="Ruby On Rails" class="rails" />
+						<br />
+						Slides disponibles ici : <a href="http://delmaire.iiens.net/rails"/>http://delmaire.iiens.net/rails</a>
+					</p>
+					<p>
+						<small>
+							De Loïc Delmaire alias Skelz0r<br />
+							<a href="https://twitter.com/loicdelmaire">@loicdelmaire</a> / <a href="mailto:loic@blackbird.co">loic@blackbird.co</a>
+						</small>
+					</p>
+				</section>
+
+				<section>
+					<h3>Objectifs (1/2)</h3>
+					<ul class="main">
+						<li>Une culture générale sur les frameworks web</li>
+						<li>Des bonnes pratiques de développement</li>
+						<li>Pondre des sites webs efficacement et rapidement <img src="img/thumb-up.png" alt="Trop cool!" /></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>Objectifs (2/2)</h3>
+					A la fin du cours, vous aurez codé un <strong>blog avec gestion d'articles</strong>
+					<img src="img/cool.png" alt="Un joli site ouaib" />
+					<p class="fragment">
+						<small>
+							Oui oui, il ressemblera à ça :)
+						</small>
+					</p>
+				</section>
+
+				<section>
+					<h3>Plan du tutal</h3>
+					<ol class="main">
+						<li>Rails, What ze fuck is dat shit? ô_Ô</li>
+						<li>Un peu de théorie /o\</li>
+						<li>La première feature \o/</li>
+						<li>Deep inside ... o (<= ceci est un trou )</li>
+						<li>Un peu de pratique :]</li>
+					</ol>
+				</section>
+				
+				<section data-title="Rails, What ze fuck is dat shit?">
+					<h3>I. Rails, What ze fuck is dat shit?</h3>
+					<ol class="main">
+						<li>Petit historique du web ..</li>
+						<li>... et Rails dans tout ça ?</li>
+					</ol>
+				</section>
+
+				<section data-subtitle="Petit historique du web">
+					<h4>Petit historique du web</h4>
+					Le début du web: <em>World Wide Web</em> (1990)
+					<br />
+					<a href="http://www.militarycorruption.com/"><img class="center fragment" src="img/OLD.png" alt="Ugly.." /></a>
+				</section>	
+				
+				<section>
+					<h4>Petit historique du web</h4>
+					Premières pages dynamiques (1994)
+					<div class="container">
+						<div class="span4 fragment">
+							<img src="img/java.jpg" alt="Java" />
+							<br />
+							<strong>Java</strong>
+						</div>
+						<div class="span4 fragment" style="margin-top: 80px;">
+							<img src="img/js.png" alt="Javascript" />
+							<br />
+							<strong>Javascript</strong>
+						</div>
+						<div class="span4 fragment" style="margin-top: 150px;">
+							<img src="img/php.png" alt="PHP" />
+							<br />
+							<strong>PHP</strong>
+						</div>
+					</div>
+				</section>
+
+				<!-- TODO: slide avec quelques framworks -->
+
+				<section data-subtitle="Et Rails dans tout ça ?">
+					<h3>Et Rails dans tout ça ?</h3>
+					<div class="container">
+						<div class="span6">
+							<img src="img/rails.png" alt="Ruby On Rails" />	
+						</div>
+						<div class="span6">
+							<ul style="margin-top: 100px;">
+								<li>Crée en 2004, par <a href="https://twitter.com/dhh" alt="Compte twitter de dhh">@dhh</a> (37signals), extrait de <a href="http://basecamp.com/" alt="Basecamp: Project management software, online collaboration">Basecamp</a></li>
+				<!-- TODO: des détails svp ? -->
+								<li class="fragment">Framework MVC ..</li>
+								<li class="fragment">.. écrit en Ruby ..</li>
+								<li class="fragment">.. très haut niveau!</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- FAIRE DU GRAS GRAS -->
+				<section id="philosophie">
+					<h3>La philosophie de Rails</h3>
+					<div class="container">
+						<div class="span4">
+							<img src="img/alert.png" alt="Important!" />
+						</div>
+						<div class="span8">
+							<ol class="">
+								<li><strong>Don't Repeat Yourself</strong></li>
+								<li class="fragment"><strong>Conventions over Configurations</strong></li>
+							</ol>
+						</div>
+					</div>
+				</section>
+				
+				<section data-title="Un peu de théorie">
+					<h3>Un peu de théorie</h3>
+					<ol>
+						<li>Posons des conventions : l'architecture REST</li>
+						<li>Et concrétement, <em>¿ que pasa ?</em> Le MVC et le routage</li>
+					</ol>
+				</section>
+
+				<!--  Roy Fielding 2000 -->
+				<section data-subtitle="L'architecture REST">
+					<h3>L'architecture REST<br /><a href="https://fr.wikipedia.org/wiki/Representational_State_Transfer">REpresentational State Transfer</a></h3>
+					<p>
+						Il s'agit de <em>contraintes</em> appliquées au protocole HTTP (2000, Roy Fielding)
+					</p>
+					<ul class="main">
+						<li class="fragment"><span class="underline">Exemple 1</span> : On accède au listing des articles à l'adresse <strong>/articles</strong> </li>
+						<li class="fragment"><span class="underline">Exemple 2</span> : Un article est toujours défini par un titre et un texte.</li>
+						<li class="fragment"><span class="underline">Exemple 3</span> : le client et le serveur sont séparés.</li>
+					</ul>
+				</section>
+
+				<section id="mvc" data-subtitle="Comment ça se passe ?">
+					<h3>Concrètement, qu'est-ce qui se passe ?</h3>
+					<div class="container">
+						<div class="span6">
+							<img class="mvc" src="img/mvc/1.png" alt="MVC" />
+						</div>
+						<div class="span6">
+							<ul>
+								<li>Le client entre une adresse web dans son navigateur</li>
+								<li class="fragment" data-step="2">Le serveur WEB (apache ou autre) récupère la requête ..</li>
+								<li class="fragment" data-step="3">.. pour la rediriger dans le routeur de l'application.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section id="mvc" data-subtitle="Le MVC dans Rails">
+					<h3>Le MVC dans Rails</h3>
+					<div class="container">
+						<div class="span6">
+							<img class="mvc" src="img/mvc/4.png" alt="MVC" />
+						</div>
+						<div class="span6">
+							<ul>
+								<li>Le routeur redirige sur le bon contrôleur.</li>
+								<li class="fragment" data-step="5">Le contrôleur va chercher dans le modèle les données.</li>
+								<li class="fragment" data-step="6">Le modèle "parle" à la base de donnée ..</li>
+								<li class="fragment" data-step="7">.. et renvoi les données formatées au contrôleur.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section id="mvc" data-subtitle="Le MVC dans Rails">
+					<h3>Le MVC dans Rails</h3>
+					<div class="container">
+						<div class="span6">
+							<img class="mvc" src="img/mvc/8.png" alt="MVC" />
+						</div>
+						<div class="span6">
+							<ul>
+								<li>Le contrôleur appelle la bonne vue</li>
+								<li class="fragment" data-step="9">Après quelques traitements, la vue est rendue au webserveur ..</li>
+								<li class="fragment" data-step="10">Qui va nous rendre la bonne page !</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+			<!-- Un peu de pratique -->
+				<!-- C'est parti! -->
+				<section data-title="La première feature">
+					<h3>La première feature</h3>
+					<ol>
+						<li>Les commandes de bases</li>
+						<li>Anatomie de l'application</li>
+						<li>Scaffoldons mes amis!</li>
+					</ol>
+				</section>
+
+				<section data-subtitle="Les commandes de bases">
+					<h2>Les commandes de bases</h2>
+					<ul>
+						<li>
+							La commande <em>rails</em>, génération et manipulation du site
+							<br />
+							<span class="underline">Exemple</span> : 
+							<pre class="inline"><code>rails server # Lance le serveur</code></pre>
+						</li>
+						<li class="fragment">
+							La commande <em>rake</em>, un make-like
+							<br />
+							<span class="underline">Exemple</span> :
+							<pre class="inline"><code>rake db:create # Créer la base de données</code></pre>
+						</li>
+						<li class="fragment">
+							La commande <em>bundle</em>, la commande de gestion des dépendances
+							<br />
+							<span class="underline">Exemple</span> :
+							<pre class="inline"><code>bundle install # Installe les dépendances d'un projet</code></pre>
+						</li>
+					</ul>
+				</section>
+
+				<section data-subtitle="Anatomie de l'application">
+					<h2>Anatomie de l'application</h2>
+					<ul class="no-style">
+						<li>
+							Tout d'abord, générons notre première application !<br />
+							<pre class="inline"><code>rails new rails-tutal</code></pre>
+						</li>
+
+						<li class="fragment">
+							Après un jolie lot de output :<br />
+							<pre class="inline"><code>cd rails-tutal && rails server</code></pre>
+							<br />
+							Admirez votre première page rails sur <a href="http://0.0.0.0:3000">http://0.0.0.0:3000</a> !
+						</li>
+					</ul>
+				</section>
+				
+				<section data-subtitle="Anatomie de l'application : le dossier app/">
+					<h3>Le dossier app/</h3>
+					<div class="container">
+						<div class="span4 console">
+							app<br />
+							├── assets<br />
+							│   ├── images<br />
+							│   │   └── rails.png<br />
+							│   ├── javascripts<br />
+							│   │   └── application.js<br />
+							│   └── stylesheets<br />
+							│         └── application.css<br />
+							├── controllers<br />
+							│   └── application_controller.rb<br />
+							├── helpers<br />
+							│   └── application_helper.rb<br />
+							├── mailers<br />
+							├── models<br />
+							└── views<br />
+							        └── layouts<br />
+							               └── application.html.erb<br />
+<br />
+							10 directories, 6 files
+						</div>
+						<div class="span8 small">
+							Il s'agit du <strong>plus important</strong> !
+							<br />
+							<ul class="fragment">
+								<li><strong>assets/</strong> : Dossier des ressources tierces liées à la vue.</li>
+							</ul>
+							<ul class="fragment">
+								<li><strong>controller/</strong> : Dossier des contrôleurs
+								<li><strong>models/</strong> : Dossier des modèles
+								<li><strong>views/</strong> : Dossier des vues
+							</ul>
+							<ul class="fragment">
+								<li><strong>mailers/</strong> : Gestion de l'envoi et réception de mails dans l'application
+								<li><strong>helpers/</strong> : Modules de fonctions
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section data-subtitle="Anatomie de l'application : le dossier config/">
+					<h3>Le dossier config/</h3>
+					<div class="container">
+						<div class="span4 console">
+							config<br />
+							├── application.rb<br />
+							├── boot.rb<br />
+							├── database.yml<br />
+							├── environment.rb<br />
+							├── environments<br />
+							│   ├── development.rb<br />
+							│   ├── production.rb<br />
+							│   └── test.rb<br />
+							├── initializers<br />
+							│   ├── backtrace_silencers.rb<br />
+							│   ├── inflections.rb<br />
+							│   ├── mime_types.rb<br />
+							│   ├── secret_token.rb<br />
+							│   ├── session_store.rb<br />
+							│   └── wrap_parameters.rb<br />
+							├── locales<br />
+							│   └── en.yml<br />
+							└── routes.rb<br />
+<br />
+							3 directories, 15 files
+						</div>
+						<div class="span8 small">
+							On trouve ici toutes les <strong>configurations</strong> de votre application.
+							<br />
+							<ul>
+								<li class="fragment"><strong>application.rb</strong> et <strong>environnement.rb</strong> : fichier contenant quelques configurations.</li>
+								<li class="fragment"><strong>environnements/</strong> : configurations spécifiques aux environnements.</li>
+								<li class="fragment"><strong>database.yml</strong> : fichier contenant les infos pour la connexion à la base de données.</li>
+								<li class="fragment"><strong>initializers/</strong> : dossiers contenant tous les fichiers customs chargés au démarrage 
+								<li class="fragment"><strong>routes.rb</strong> : fichier listant les différentes routes possibles de votre application.</li> 
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section data-subtitle="Scaffoldons mes amis!">
+					<h3>C'est l'heure du .. SCA-SCA-SCAFOLD!</h3>
+					<p>
+						Tapez la commande suivante:<br />
+						<pre class="inline"><code>rails generate scaffold article title body:text</code></pre>
+					</p>
+					<p class="fragment">
+						Et voilà ! Vous pouvez maintenant accéder au site voir le résultat !
+						<p class="fragment">... wait ... à quelle adresse ? ô_Ô</p>
+					</p>
+				</section>
+
+				<section>
+				<h3>Le routage</h3>
+				<div class="container">
+					<div class="span6">
+						<!-- TODO: refaire cette image & le gimp -__- -->
+						<img src="img/mvc/10.png" alt="MVC" />
+					</div>
+					<div class="span6">
+						<ul class="no-style">
+							<li>Il faut définir une route pour accéder à notre ressource!</li>
+							<li class="fragment">Cela se passe dans le fichier <strong>config/routes.rb</strong></li>
+							<li class="fragment">La commande pour lister les routes : <pre class="inline"><code>rake routes</code></pre></li>
+						</ul>
+					</div>
+				</div>
+				</section>
+
+				<section>
+					<h3>Le CRUD</h3>
+					<p>.. pour <strong>CR</strong>eate, <strong>U</strong>pdate, <strong>D</strong>elete</p>
+					<table class="routes">
+						<tr>
+							<td><strong>Verbe HTTP</strong></td>
+							<td><strong>Adresse</strong></td>
+							<td><strong>action</strong></td>
+							<td><strong>utilisé pour</strong></td>
+						</tr>
+						<tr class="fragment">
+							<td>GET</td>
+							<td>/articles</td>
+							<td>index</td>
+							<td>Listing des articles</td>
+						</tr>
+						<tr class="fragment">
+							<td>GET</td>
+							<td>/articles/new</td>
+							<td>new</td>
+							<td>Renvoi un formulaire HTML pour créer un article</td>
+						</tr>
+						<tr class="fragment">
+							<td>POST</td>
+							<td>/articles</td>
+							<td>create</td>
+							<td>Créer un article</td>
+						</tr>
+						<tr class="fragment">
+							<td>GET</td>
+							<td>/articles/:id</td>
+							<td>show</td>
+							<td>Montre l'article ayant l'id ":id"</td>
+						</tr>
+						<tr class="fragment">
+							<td>GET</td>
+							<td>/articles/:id/edit</td>
+							<td>edit</td>
+							<td>Renvoi un formulaire pour éditer l'article ayant l'id ":id"</td>
+						</tr>
+						<tr class="fragment">
+							<td>PUT</td>
+							<td>/articles/:id</td>
+							<td>update</td>
+							<td>Modifie l'article ayant l'id ":id"</td>
+						</tr>
+						<tr class="fragment">
+							<td>DELETE</td>
+							<td>/articles/:id</td>
+							<td>destroy</td>
+							<td>Supprime l'article ayant l'id ":id"</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h3>Voyons voir ..!</h3>
+					<p>
+						Allons donc sur <a href="http://0.0.0.0:3000/articles">http://0.0.0.0:3000/articles</a> !!
+					</p>
+					<img src="img/dafuq.jpg" alt="DAFUQ?" class="fragment" />
+				</section>
+				<section>
+					<h3>Gestion de la base de données :<br />les migrations en rails</h3>
+					<ul class="no-style">
+						<li>De base, chaque opération sur le schéma de la base de données s'effectue à l'aide de <strong>migrations</strong></li>
+						<li class="fragment">
+							Tapez la commande suivante : <pre class="inline"><code>rake db:migrate</code></pre><br />
+							Celle-ci permet d'effectuer toutes les migrations en attentes (se trouvant dans <strong>db/migrate/</strong>)
+						</li>
+						<li class="fragment">
+							Retournons maintenant sur <a href="http://0.0.0.0:3000/articles">http://0.0.0.0:3000/articles</a>
+						</li>
+					</ul>
+				</section>
+				<section data-title="Deep inside ...">
+					<h3>Deep inside ...</h3>
+					<ol>
+						<li>Le contrôleur : comment ça se passe là dedans ?</li>
+						<li>Le modèle : la valeur business de votre application</li>
+						<li>La vue : le templating ERB</li>
+					</ol>
+				</section>
+			
+				<section>
+					<img src="img/mvc/10.png" alt="MVC" />
+				</section>
+
+				<section data-subtitle="Le contrôleur : comment ça se passe là dedans ?">
+					<h3>Le contrôleur : comment ça se passe là dedans ?</h3>
+					<ul>
+						<li>Point d'entrée du traitement de la requête</li>
+						<li class="fragment">Récupération des données de la ressource</li>
+						<li class="fragment">Traitement des variables d'environnements</li>
+					</ul>
+				</section>
+
+				<section data-subtitle="Le modèle : la valeur business de votre application">
+					<h3>Le modèle : la valeur business de votre application</h3>
+					<p>Tout se passe via un <strong>ORM</strong> (Object Relation Mapper)<br /> nommée <strong>ActiveRecord</strong></p>
+					<p>ActiveRecord s'occupe de :
+					<ul>
+						<li class="fragment">parler à la base de donnée</li>
+						<li class="fragment">valider nos données</li>
+						<li class="fragment">exécuter des processus pendant la durée de vie de la donnée</li>
+						<li class="fragment">le café (presque ..)</li>
+					</ul>
+				</section>
+
+				<section data-subtitle="La vue : le templating ERB">
+					<h3>La vue : le templating ERB</h3>
+					<p>L'ERB (pour ERuBy) se rapproche de ce que <br />vous pouvez voir en PHP à l'école</p>
+					<p>Le templating permet de :</p>
+					<ul>
+						<li class="fragment">rendre du HTML (U DON'T SAY) (et autres ..)</li>
+						<li class="fragment">utiliser directement du code ruby au sein de l'application</li>
+						<li class="fragment">manipuler les variables instanciées dans le contrôleur</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Hey, hey ! <span class="fragment">LISTEN!</h3>
+					<p class="fragment">
+						Je vous avais promis ça à l'origine :<br />
+						<img src="img/cool.png" style="width: 60%;" alt="Un joli site ouaib" />
+					</p>
+					<p class="fragment">
+						Voici un petit fichier qui va rendre tout ça plus joli (non non c'est pas de la triche :-°) : <a href="http://delmaire.iiens.net/hackz0r.css.scss">hackz0r.css.scss</a>
+						<br />
+						<p class="fragment">
+							A placer dans le dossier où se trouve les feuilles de style CSS :<br />
+							<strong class="fragment">app/assets/stylesheets</strong>
+						</p>
+					</p>
+				</section>
+
+
+				<section>
+					<h3>OKI?</h3>
+					<img src="img/dealwithit/1.jpg" class="deal" alt="PROBLEM?" />
+				</section>
+
+				<section>
+					<h3>LOL</h3>
+					<img src="img/dealwithit/2.jpg" class="deal" alt="DEAL WITH IT!" />
+				</section>
+	
+				<section data-title="Un peu de pratique">
+					<h3>Un peu de pratique</h3>
+					<ul>
+						<li>Spécifications</li>
+						<li>Conception (en milieu Rails)</li>
+						<li>Let's do it! (© Dora)</li>
+					</ul>
+				</section>
+
+				<section data-subtitle="Spécifications">
+					<p>
+						<strong>Objectif</strong> : Ajouter des commentaires sur les articles
+					</p>
+					<ul>
+						<li class="fragment">
+							Chaque article se voit doté d'un champs pour entrer un commentaire
+						</li>
+						<li class="fragment">
+							Ces commentaires sont visibles sur la page de l'article
+						</li>
+						<li class="fragment">
+							Ces commentaires sont affichés du plus récent au plus ancien, de haut en bas.
+						</li>
+					</ul>
+				</section>
+				
+				<section data-subtitle="Conception">
+					<h3>D'un point de vue MVC</h3>
+					<ul>
+						<li>
+							<strong>D'un point de vue model</strong> :<br />
+							<span class="fragment">Un commentaire est composé d'un champ de type text</span><br />
+							<span class="fragment">Il existe une relation d'association 1-N entre le modèle Article et Commentaire</span>						
+							</li>
+						<li>
+							<strong>D'un point de vue contrôleur</strong> :<br />
+							<span class="fragment">Il faudra créer la méthode create. (créer la create : <a href="http://larde.iiens.net/CONR.jpg">CONR!</a>)</span>
+						</li>
+						<li>
+							<strong>D'un point de vue vue</strong> (j'avais pas vu!) :<br />
+							<span class="fragment">Il faut créer un formulaire et un listing de commentaires.</span>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Quelques conseils</h3>
+					<ul>
+						<li>
+							N'hésitez pas à utiliser le scaffold !
+						</li>
+						<li>
+							Allez lire le code généré pour la gestion des formulaires<br />
+							<span class="underline">Protip</span>: app/views/
+						</li>
+					</ul>
+				</section>
+
+				<section data-subtitle="Let's do it!">
+					<h1>A vous de jouez maintenant !</h1>
+					<p>
+					Rendez-vous sur <a href="http://gothis.blackbird.co">http://gothis.blackbird.co</a> <br />pour la checklist à remplir.
+					</p>
+				</section>
+				<section>
+					<h1>Merci d'avoir écouté !</h1>
+					<h3 class="fragment">Des questions ?</h3>
+				</section>
+			</div>
+		</div>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="js/highlight.js"></script>
+		<script src="js/bbird.js"></script>
+	</body>
+</html>
